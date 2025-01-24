@@ -1,0 +1,56 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>OCR App</title>
+</head>
+<body>
+    <h1>Upload Image for OCR</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if extracted_text %}
+        <h2>Extracted Text:</h2>
+        <pre>{{ extracted_text }}</pre>
+    {% endif %}
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OCR with Language Selection</title>
+</head>
+<body>
+    <h1>Upload Image for OCR</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <label for="language">Select Language:</label>
+        <select name="language" id="language">
+            {% for code, name in languages.items %}
+                <option value="{{ code }}" {% if selected_language == code %}selected{% endif %}>
+                    {{ name }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if from_name and to_name %}
+    <h3>Detected Names:</h3>
+    <p><strong>From:</strong> {{ from_name }}</p>
+    <p><strong>To:</strong> {{ to_name }}</p>
+     {% endif %} 
+
+
+    {% if extracted_text %}
+        <h3>Extracted Text:</h3>
+        <pre>{{ extracted_text }}</pre>
+    {% endif %}
+</body>
+</html>
