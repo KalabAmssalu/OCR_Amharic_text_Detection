@@ -12,7 +12,7 @@ from pytesseract import image_to_string, pytesseract
 from PIL import Image
 
 # Set the Tesseract executable path if it's not in your PATH
-pytesseract.tesseract_cmd = r"D:\Program Files\Tesseract\tesseract.exe"
+pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 
 
